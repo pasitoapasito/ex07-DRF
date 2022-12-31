@@ -7,16 +7,16 @@ from django.urls import path, re_path, include
 
 schema_view = get_schema_view(
     openapi.Info(
-        title='Data Request API',
+        title='External Request API',
         default_version='v1',
-        description='requests-project',
+        description='External API Requests Project',
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
 
 urlpatterns = [
-
+    path('api', include('api.urls')),
 ]
 
 urlpatterns += [
