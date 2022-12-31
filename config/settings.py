@@ -38,17 +38,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = get_env_variable('DEBUG')
+ALLOWED_HOSTS = (get_env_variable('ALLOWED_HOSTS'), )
 
 SECRET_KEY = get_env_variable('SECRET_KEY')
-API_KEYS = get_env_variable('API_KEYS')
+URL = get_env_variable('URL')
 
-ALLOWED_HOSTS = (get_env_variable('ALLOWED_HOSTS'), )
 
 APPEND_SLASH = False
 
 # Application definition
 PROJECT_APPS = [
-
+    'api',
 ]
 
 THIRD_PARTY_APPS = [
