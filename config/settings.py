@@ -27,6 +27,7 @@ def get_env_variable(var_name):
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env()
+env.escape_proxy = True
 
 environ.Env.read_env()
 
