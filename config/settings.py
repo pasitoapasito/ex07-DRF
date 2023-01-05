@@ -10,18 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-import os
+import os, environ
 from pathlib import Path
-
-from dotenv  import load_dotenv, find_dotenv
 
 from django.core.exceptions import ImproperlyConfigured
 
-load_dotenv(find_dotenv())
 
 def get_env_variable(var_name):
     try:
-        return os.environ[var_name]
+        return env(var_name)
     except KeyError:
         error_msg = f'Set the {var_name} environment variable'
         raise ImproperlyConfigured(error_msg)
@@ -29,6 +26,10 @@ def get_env_variable(var_name):
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env()
+env.escape_proxy = True
+
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
