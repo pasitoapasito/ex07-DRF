@@ -26,8 +26,8 @@ def get_env_variable(var_name):
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env()
-env.escape_proxy = True
+env = environ.Env()      # django-environ
+env.escape_proxy = True  # settings about variables that started with '$'
 
 environ.Env.read_env()
 
